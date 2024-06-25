@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CNAB - Conversor de Remessa para Retorno</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1 class="title">Conversor de arquivo CNAB</h1>
+    <h2 class="subtitle">.REM para .RET</h2>
+    <input type="file" id="fileInput" multiple accept=".rem" class="file-input">
+    <button id="processButton" disabled class="process-button">Processar</button>
+    <div id="results" class="results"></div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
