@@ -10,9 +10,45 @@
   <div class="container">
     <h1 class="title">Conversor de arquivo CNAB</h1>
     <h2 class="subtitle">.REM para .RET</h2>
-    <input type="file" id="fileInput" multiple accept=".rem" class="file-input">
-    <button id="processButton" disabled class="process-button">Processar</button>
-    <div id="results" class="results"></div>
+    <label for="fileInput" id="selectFile" class="file-upload-label">Escolher Arquivos</label>
+    <input type="file" id="fileInput" multiple accept=".rem">
+    <button id="processButton" disabled class="process-button">Converter</button>
+    <div id="message" class="message" style="display: none;"></div>
+  </div>
+  <div class="footer">
+    <ul class="footer-ul">
+      <li class="footer-li tooltip-lnk">
+        <a class="" href="https://chromewebstore.google.com/detail/kfinkhckgepbndjcolgehfgomeiklffi/support?filterBy=suggestions"
+        target="_blank">
+          <div id="icon-support" class="icon-support"></div>
+          <span class="tooltiptext">Suporte</span>
+        </a>
+      </li>
+    </ul>
+
+    <a href="https://chromewebstore.google.com/detail/kfinkhckgepbndjcolgehfgomeiklffi/reviews" target="_blank">
+      <div role="img" class="stars-container tooltip-lnk">
+        <div class="stars-block">
+          <div class="stars-outline">
+            <div class="svg-stars svg-star-outline"></div>
+            <div class="svg-stars svg-star-outline"></div>
+            <div class="svg-stars svg-star-outline"></div>
+            <div class="svg-stars svg-star-outline"></div>
+            <div class="svg-stars svg-star-outline"></div>
+          </div>
+          <div class="stars-full" style="width: 99%;">
+            <div class="svg-stars svg-star"></div>
+            <div class="svg-stars svg-star"></div>
+            <div class="svg-stars svg-star"></div>
+            <div class="svg-stars svg-star"></div>
+            <div class="svg-stars svg-star"></div> 
+          </div>
+          <span class="tooltiptext">Avaliar</span>
+        </div>
+        
+      </div>
+      <span id="avaliar" class="tooltiptext hidden">Avaliar</span>
+    </a>
   </div>
   <script src="popup.js"></script>
 </body>
