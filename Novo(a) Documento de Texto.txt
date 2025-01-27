@@ -1,1 +1,0 @@
-Possibilitar que a extensão use a API chrome.downloads para iniciar downloads de arquivos diretamente no navegador. Ela é necessária para que o usuário faça upload do arquivo de remessa (.rem) para o popup da extensão e após a conversão permitir que o usuário baixe os arquivos de retorno (.ret) gerados.
