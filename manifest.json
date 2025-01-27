@@ -1,11 +1,8 @@
 {
   "manifest_version": 3,
   "name": "CNAB Converte Remessa para Retorno",
-  "version": "1.0.0",
-  "description": "Converte arquivos CNAB de Remessa em arquivos de Retorno.",
-  "permissions": [
-    "downloads"
-  ],
+  "version": "1.0.2",
+  "description": "Converter arquivos CNAB de Remessa (.rem) em arquivos CNAB de Retorno (.ret).",
   "action": {
     "default_popup": "popup.html",
     "default_icon": "icon128.png"
@@ -17,5 +14,6 @@
     "16": "icon16.png",
     "48": "icon48.png",
     "128": "icon128.png"
-  }
+  },
+  "author": "Marcelo Lourenço"
 }

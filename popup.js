@@ -3,7 +3,7 @@ const processButton = document.getElementById('processButton');
 const messageElement = document.getElementById('message');
 let vlTotal = 0;
 
-function displayMessage(type, message) { 
+function displayMessage(type, message) {
   messageElement.className = '';
   messageElement.classList.add(`${type}-message`);
   messageElement.textContent = message;
@@ -118,14 +118,10 @@ async function convertRemessaToRetorno(file) {
   });
 }
 
-
-
-
 async function processRemessa(lines) {
   const retornoLines = [];
   // Processar o header (Registro 0)
   retornoLines.push(processHeader(lines[0]));
-
 
   // Processar as transações (Registro 1)
   let qttTransaction = 0; // Inicializa a contagem de transações
@@ -140,13 +136,9 @@ async function processRemessa(lines) {
   return retornoLines;
 }
 
-
-
-
 function replace(line, start, end, replacement) {
-  const zeroBasedStart = start - 1;
-  const zeroBasedEnd = end;
-  return line.slice(0, zeroBasedStart) + replacement + line.slice(zeroBasedEnd);
+  const basedStart = start - 1;
+  return line.slice(0, basedStart) + replacement + line.slice(end);
 }
 
 function now(format) {
@@ -193,9 +185,9 @@ function processTransaction(line) {
   line = replace(line, 117, 126, originalLine.slice(110, 120)); // 10 - Documento posição 111 a 120 da linha original
   line = replace(line, 127, 146, originalLine.slice(70, 82).padStart(20, '0')); // 10 -Identificação do Título no Banco - posição 71 a 81 + digito 82 a 82 da linha original
   line = replace(line, 147, 152, originalLine.slice(120, 126)); // 6 - Data Venciment do Titúlo ( DDMMAA) posição 121 a 126 da linha original
-  line = replace(line, 153, 165, line.slice(126, 139)); //  "Valor do Título" posição 127 a 139 da linha original
-  line = replace(line, 166, 168, line.slice(139, 142)); // "Banco Cobrador" posição 140 a 142 da linha original
-  line = replace(line, 169, 173, line.slice(142, 147)); // "Agência Cobradora" posição 143 a 147 da linha original
+  line = replace(line, 153, 165, originalLine.slice(126, 139)); //  "Valor do Título" posição 127 a 139 da linha original
+  line = replace(line, 166, 168, originalLine.slice(139, 142)); // "Banco Cobrador" posição 140 a 142 da linha original
+  line = replace(line, 169, 173, originalLine.slice(142, 147)); // "Agência Cobradora" posição 143 a 147 da linha original
   line = replace(line, 174, 175, ''.padEnd(2, ' ')); // 2 - Branco - Especie Título
   line = replace(line, 176, 188, '0000000000000'); // 13 - Despesas de cobrança para os Códigos de Ocorrência
   line = replace(line, 189, 201, '0000000000000'); // 13 - Outras Despesas Custas de Protesto
@@ -203,7 +195,7 @@ function processTransaction(line) {
   line = replace(line, 215, 227, '0000000000000'); // 13 - IOF Devido
   line = replace(line, 228, 240, '0000000000000'); // 13 - Abatimento Concedido sobre o Título
   line = replace(line, 241, 253, '0000000000000'); // 13 - Desconto Concedido
-  line = replace(line, 254, 266, line.slice(126, 139)); // 13 -Valor Pago - posição 127 a 139 da linha original
+  line = replace(line, 254, 266, originalLine.slice(126, 139)); // 13 -Valor Pago - posição 127 a 139 da linha original
   line = replace(line, 267, 279, '0000000000000'); // 13 - Juros de Mora
   line = replace(line, 280, 292, '0000000000000'); // 13 - Outros Créditos
   line = replace(line, 293, 294, ''.padEnd(2, ' ')); // 2 - Branco
@@ -220,8 +212,8 @@ function processTransaction(line) {
   line = replace(line, 395, 400, originalLine.slice(394, 400)); //Nº Sequencial de Registro | 6 - | posição 395, 400 da linha original
 
   vlTotal = vlTotal + parseFloat(originalLine.slice(126, 139)); //posição 127 a 139 da linha original (acumula o valor total)
-  console.log(String(vlTotal).padStart(14, '0'))
- 
+  //console.log(String(vlTotal).padStart(14, '0'))
+
   return line;
 }
 
@@ -229,9 +221,6 @@ function processTrailer(line, qttLines) {
   let originalLine = line;
   let quantityLines = String(qttLines);
   let lastSeqNum = qttLines + 2
-  
-
-  
 
   line = replace(line, 1, 1, '9'); // Identificação do Registro | 1 | 9
   line = replace(line, 2, 2, '2'); // Identificação do Retorno | 1 | 2

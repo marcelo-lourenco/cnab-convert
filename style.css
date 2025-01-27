@@ -26,7 +26,7 @@ body {
   background-color: var(--color-background);
   border-radius: 10px;
   /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
-  
+
 }
 
 .container {
@@ -111,7 +111,6 @@ input[type="file"] {
   background-color: #0056b3;
 }
 
-
 .success-message,
 .error-message,
 .info-message,
@@ -126,7 +125,7 @@ input[type="file"] {
 }
 
 .success-message {
-  background-color: rgb(236, 247, 242);
+  background-color: #ecf7f2;
   color: #017e16;
 }
 
@@ -141,8 +140,8 @@ input[type="file"] {
 }
 
 .alert-message {
-  background-color:  #fafaba ;
-  color:  #FFFF00;
+  background-color: #fafaba;
+  color: #FFFF00;
 }
 
 .hidden {
@@ -213,8 +212,8 @@ input[type="file"] {
 .footer-li::after,
 .footer-li::before,
 .footer-li::selection {
- /* background-color: var(--color-blur); */
- /* color: var(--color-text-default) */
+  /* background-color: var(--color-blur); */
+  /* color: var(--color-text-default) */
 }
 
 .footer-a,
